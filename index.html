@@ -270,49 +270,10 @@
  .mrs { font-size:11.5px; color:var(--mut); direction:rtl; text-align:left; font-weight:600; }
  .backrow { border:none; background:none; color:#B08B3E; font-size:13px; font-weight:800; padding:0 0 12px; }
 
-
-/* === Japanese Calm visual layer === */
-:root { --cream:#F7F3EA; --cream2:#ECE8DF; --cardbg:#FFFDF9; --ink:#292720; --mut:#726E63; --verm:#B94E3C; --gold:#AE853D; --teal:#37796E; --plum:#745B88; --red:#B9433F; --line:rgba(41,39,32,.10); --sh:0 2px 10px rgba(41,39,32,.05); }
-body { background:radial-gradient(circle at top right,rgba(185,78,60,.07),transparent 30%),var(--cream); }
-header { padding:15px 16px 13px; background:rgba(247,243,234,.92); }
-header h1 { font-size:16px; letter-spacing:.6px; }
-main { padding:20px 16px 110px; }
-.dhead { margin:8px 0 6px; }
-.dhead .dtitle h2 { font-size:18px; }
-.dhead .dtitle h2::after { width:46px; height:3px; margin-top:5px; border-radius:4px; }
-.sub { font-size:12px; }
-.dnav { flex-basis:40px; width:40px; height:40px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.75); box-shadow:none; }
-.go,.showmap { display:inline-flex; align-items:center; justify-content:center; gap:5px; }
-.go svg,.showmap svg,.hotel-upload svg { width:15px; height:15px; flex:0 0 auto; }
-.go { align-self:center; padding:7px 10px; border:1px solid #D6E1F1; border-radius:10px; background:#EDF4FC; color:#3568B8; font-size:11px; }
-.showmap { border:1px solid color-mix(in srgb,var(--dc,var(--verm)) 22%,white); }
-.hotelcard { flex-wrap:wrap; gap:10px; padding:14px 15px; border-radius:16px; border-left-width:4px; box-shadow:var(--sh); }
-.hotelcard .hb { min-width:170px; }
-.hn { font-size:13px; }.hd { font-size:10.5px; }
-.hotel-actions { display:flex; width:100%; gap:8px; padding-top:2px; }
-.hotel-actions .go,.hotel-actions .hotel-upload { flex:1; }
-.file-input { display:none; }
-.hotel-upload { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:34px; border:1px dashed #CFB16B; border-radius:10px; background:#FFFAF0; color:#80611F; font-size:11px; font-weight:800; cursor:pointer; }
-.hotelcard .attwrap { width:100%; margin-top:0; }
-.hotelcard .attlist { margin-top:5px; }
-.hotelcard .attf { padding:4px 2px; }
-.hotelcard .attf a { font-size:10px; }
-.tl { padding-left:14px; }.tl::before { left:4px; border-left:1px solid color-mix(in srgb,var(--dc,var(--gold)) 45%,transparent); }
-.tl > .card::before,.tl > .grp::before { left:-16px; width:9px; height:9px; border-width:2px; }
-.card { gap:11px; padding:14px; margin-bottom:10px; border:1px solid var(--line); border-radius:16px; box-shadow:var(--sh); }
-.card:has(.b.open) { box-shadow:0 8px 20px rgba(41,39,32,.08); }
-.card.snackcard { background:#FBF9FC; border-color:#E8DFEF; }
-.card.altcard { margin-left:18px; border:1px dashed #DDC280; border-radius:14px; background:#FFFAF0; }
-.t { flex-basis:72px; }.t span { max-width:72px; padding:4px 7px; border-radius:8px; font-size:9.5px; }
-.n { font-size:13.5px; line-height:1.5; }.ad { font-size:10.5px; line-height:1.45; }
-.idx { width:19px; height:19px; margin-right:5px; font-size:10px; }.cat { padding:2px 6px; border-radius:6px; font-size:8.5px; }
-.cdet { margin-top:8px; padding-left:16px; }.cdet li { font-size:11.5px; line-height:1.55; }
-.alttoggle { padding:8px 4px 6px 96px; color:#99701E; font-size:11px; }
-.ck .box { width:21px; height:21px; border-width:2px; border-radius:7px; }.card.done { opacity:.62; }
-.nav { gap:3px; padding:8px 8px calc(8px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.94); }
-.nav button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-height:52px; padding:7px 0; border-radius:12px; font-size:10px; }
-.nav button svg { width:19px; height:19px; }.nav button.on { background:var(--ink); color:#fff; }
-button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid rgba(55,121,110,.4); outline-offset:3px; }
+/* Japanese Calm — visual layer */
+:root{--cream:#F7F3EA;--paper:#FFFDF9;--ink:#292720;--mut:#716d62;--verm:#B94E3C;--teal:#37796E;--line:rgba(41,39,32,.11);--sh:0 3px 15px rgba(41,39,32,.055)}
+body{background:radial-gradient(circle at 100% 0,rgba(185,78,60,.07),transparent 31%),var(--cream)}
+header{background:rgba(247,243,234,.94);padding:15px 16px 13px}header h1{font-size:16px;letter-spacing:.5px}main{padding:20px 16px 108px}.dhead{margin:8px 0}.dhead .dtitle h2{font-size:18px}.dhead .dtitle h2:after{width:46px;height:3px;border-radius:4px}.sub{font-size:12px}.dnav{width:40px;height:40px;border:1px solid var(--line);border-radius:14px;background:#fffdf9;box-shadow:none}.hotelcard{flex-wrap:wrap;gap:10px;padding:14px 15px;border-radius:16px;border-left-width:4px;box-shadow:var(--sh)}.hotelcard .hb{min-width:170px}.hn{font-size:13px}.hd{font-size:10.5px}.hotel-actions{display:flex;width:100%;gap:8px;padding-top:2px}.hotel-actions .go,.hotel-actions .hotel-upload{flex:1}.hotel-upload{display:flex;align-items:center;justify-content:center;gap:6px;min-height:34px;border:1px dashed #cfb16b;border-radius:10px;background:#fffaf0;color:#80611f;font-size:11px;font-weight:800;cursor:pointer}.file-input{display:none}.hotelcard .attwrap{width:100%}.hotelcard .attlist{margin-top:5px}.hotelcard .attf{padding:4px 2px}.hotelcard .attf a{font-size:10px}.tl{padding-left:14px}.tl:before{left:4px}.tl>.card:before,.tl>.grp:before{left:-16px;width:9px;height:9px;border-width:2px}.card{gap:11px;padding:14px;margin-bottom:10px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh)}.card.snackcard{background:#fbf9fc;border-color:#e8dfef}.card.altcard{margin-left:18px;border:1px dashed #ddc280;border-radius:14px;background:#fffaf0}.t{flex-basis:72px}.t span{max-width:72px;padding:4px 7px;border-radius:8px;font-size:9.5px}.n{font-size:13.5px;line-height:1.5}.ad{font-size:10.5px}.idx{width:19px;height:19px;margin-right:5px;font-size:10px}.cat{padding:2px 6px;border-radius:6px;font-size:8.5px}.cdet{margin-top:8px;padding-left:16px}.cdet li{font-size:11.5px;line-height:1.55}.alttoggle{padding:8px 4px 6px 96px;color:#99701e;font-size:11px}.ck .box{width:21px;height:21px;border-width:2px;border-radius:7px}.nav{gap:3px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95)}.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:52px;padding:7px 0;border-radius:12px;font-size:10px}.nav button svg{width:19px;height:19px}.nav button.on{background:var(--ink);color:#fff}.go,.showmap{display:inline-flex;align-items:center;justify-content:center;gap:5px}.go svg,.showmap svg,.hotel-upload svg{width:15px;height:15px;flex:0 0 auto}.go{align-self:center;padding:7px 10px;border:1px solid #d6e1f1;border-radius:10px;background:#edf4fc;color:#3568b8;font-size:11px}button:focus-visible,a:focus-visible{outline:3px solid rgba(55,121,110,.4);outline-offset:3px}
 
 </style></head><body>
 <header><h1>⛩ Japan 2026 <span style="font-size:10px;font-weight:400;color:#8FA3C8;">v19.07.2026 18:25</span></h1></header>
@@ -702,47 +663,12 @@ else {
   show(saved && document.getElementById(saved) ? saved : 'home');
 }
 
-
 /* Japanese Calm enhancements */
-var MAP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V5l6-3 6 3 6-3v16l-6 3-6-3Z"></path><path d="M9 2v16"></path><path d="M15 5v16"></path></svg>';
-var UPLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.4 15.4 12.9 23.9a6 6 0 0 1-8.5-8.5l8.5-8.5a4 4 0 0 1 5.7 5.7l-8.5 8.5a2 2 0 0 1-2.8-2.8l7.8-7.8"></path></svg>';
-var NAV_ICONS = {
-  trip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 3l9 9"></path><path d="M5 10v10h14V10"></path></svg>',
-  days:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>',
-  map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V5l6-3 6 3 6-3v16l-6 3-6-3Z"></path><path d="M9 2v16M15 5v16"></path></svg>',
-  browse:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>',
-  more:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>'
-};
-function addMapIcons(root){
-  (root || document).querySelectorAll('.go, .showmap').forEach(function(el){
-    if(!el.querySelector('svg')) el.insertAdjacentHTML('afterbegin', MAP_ICON);
-  });
-}
-function addHotelUploads(){
-  document.querySelectorAll('section.day .hotelcard').forEach(function(card){
-    if(card.dataset.enhanced) return;
-    card.dataset.enhanced='true';
-    var day=card.closest('section.day').dataset.n;
-    var own='hotel-day-'+day;
-    card.dataset.own=own;
-    var mapLink=card.querySelector('.go');
-    var actions=document.createElement('div'); actions.className='hotel-actions';
-    if(mapLink) actions.appendChild(mapLink);
-    var wrap=document.createElement('div'); wrap.className='attwrap';
-    wrap.innerHTML='<button type="button" class="hotel-upload" onclick="pickFile(this)">'+UPLOAD_ICON+'Add booking</button><input class="file-input" type="file" accept=".pdf,image/*" onchange="saveFile(this)"><div class="attlist" aria-live="polite"></div>';
-    actions.appendChild(wrap);
-    card.appendChild(actions);
-  });
-}
-function addNavIcons(){
-  document.querySelectorAll('.nav button[data-nav]').forEach(function(button){
-    if(button.querySelector('svg')) return;
-    var label=button.textContent.trim();
-    button.innerHTML=(NAV_ICONS[button.dataset.nav] || '')+'<span>'+label+'</span>';
-  });
-}
-function enhanceJapaneseCalmUI(){ addMapIcons(); addHotelUploads(); addNavIcons(); loadAllAtts(); }
-enhanceJapaneseCalmUI();
+var MAP_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18 3 21V5l6-3 6 3 6-3v16l-6 3-6-3Z"></path><path d="M9 2v16M15 5v16"></path></svg>';
+var UPLOAD_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.4 15.4 12.9 23.9a6 6 0 0 1-8.5-8.5l8.5-8.5a4 4 0 0 1 5.7 5.7l-8.5 8.5a2 2 0 0 1-2.8-2.8l7.8-7.8"></path></svg>';
+var NAV_ICONS={trip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"></path></svg>',days:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>',map:MAP_ICON,browse:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>',more:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg>'};
+function calmEnhance(){document.querySelectorAll('.go,.showmap').forEach(function(x){if(!x.querySelector('svg'))x.insertAdjacentHTML('afterbegin',MAP_ICON);});document.querySelectorAll('.nav button[data-nav]').forEach(function(x){if(!x.querySelector('svg')){var t=x.textContent.trim();x.innerHTML=(NAV_ICONS[x.dataset.nav]||'')+'<span>'+t+'</span>';}});document.querySelectorAll('section.day .hotelcard').forEach(function(c){if(c.dataset.calm)return;c.dataset.calm='1';var own='hotel-day-'+c.closest('section.day').dataset.n;c.dataset.own=own;var a=document.createElement('div');a.className='hotel-actions';var map=c.querySelector('.go');if(map)a.appendChild(map);var w=document.createElement('div');w.className='attwrap';w.innerHTML='<button type="button" class="hotel-upload" onclick="pickFile(this)">'+UPLOAD_ICON+'Add booking</button><input class="file-input" type="file" accept=".pdf,image/*" onchange="saveFile(this)"><div class="attlist"></div>';a.appendChild(w);c.appendChild(a);if(typeof renderAtts==='function')renderAtts(own);});}
+calmEnhance();
 
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
 </script>
