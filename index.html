@@ -2,6 +2,8 @@
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1B2A4A">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
 <title>Japan Trip 2026</title>
 <style>
  * { box-sizing:border-box; }
@@ -122,5 +124,6 @@ function render(){
 }
 var saved=null; try{saved=localStorage.getItem('jt_day');}catch(e){}
 show(saved && document.getElementById(saved) ? saved : 'day1');
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
 </script>
 </body></html>
