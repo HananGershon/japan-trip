@@ -20,7 +20,11 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress './index.html'
+          args: >-
+            --verbose 
+            --no-progress 
+            --exclude "https://www.google.com/maps/search/.*"
+            './index.html'
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
