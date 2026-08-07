@@ -14,6 +14,7 @@ This file intentionally does **not** carry the full itinerary-planning history. 
 
 - **`interaction-fixes` script**: a capture-phase document click handler that hijacks any element with class `.addbk` or `.attbtn` — `.addbk` clicks open an old, effectively-dead booking modal; `.attbtn` clicks get forced through `pickFile()` regardless of what the element's own handler was supposed to do. **Never assign either class to a new/different-purpose button** — style-clone the CSS instead if you want that look.
 - **`file-picker-fix-js` script**: runs on every DOM mutation (via `MutationObserver`) and physically removes any `.attbtn` element it finds, replacing it with a proper `<label class="file-picker">` control. So raw `.attbtn` buttons get superseded at runtime regardless of CSS visibility — don't be surprised if a CSS change to `.attbtn` has no visible effect.
+- **In-app edits vs. this file**: edits made through the live app (Edit button, Hide from schedule, custom events, done-checks) are stored client-side (`V2Store` overlay in `localStorage`, synced across devices via Firestore) — they never touch `index.html` and are invisible from this repo. So "I already fixed that in the app" can be true even when a grep of `index.html` still shows the old content — that's expected, not a bug. If Hanan/Pola say something is already handled, ask whether that was an in-app edit (fine, no repo change needed) or something they want baked into the static file as the new baseline (needs an actual edit here). There is currently no sync mechanism from the app back to this repo — see `FUTURE_IDEAS.md` for the parked hands-free auto-sync idea.
 
 ## Hard rules
 
@@ -28,6 +29,10 @@ This file intentionally does **not** carry the full itinerary-planning history. 
 Two subagents live in `.claude/agents/` here:
 - **`place-verifier`** — dispatch when adding a genuinely new place, or changing/replacing an existing one. Don't re-verify something just because it's old — but don't assume a day is closed either; check the "planning status" list below first.
 - **`app-patch-reviewer`** — dispatch after any `index.html` edit, ideally with a prior git ref to diff against (e.g. the commit before your changes) so it can precisely check things like "did the version number actually increment" and "was a new `.addbk`/`.attbtn` class added" rather than just scanning a single snapshot.
+
+## Future ideas
+
+Implementation ideas that get raised and set aside for later live in `FUTURE_IDEAS.md`. Check it when starting new work, and add anything new that gets parked mid-conversation instead of letting it get lost.
 
 ## Planning status
 
