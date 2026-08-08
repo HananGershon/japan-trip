@@ -36,7 +36,6 @@ Implementation ideas that get raised and set aside for later live in `FUTURE_IDE
 
 ## Planning status
 
-Itinerary content is largely locked (36 days, approved). Known exceptions — treat these as open, not closed:
-- **Kamakura (Day 6)** — under reconsideration as of 2026-08. The old `PROJECT_INSTRUCTIONS.md` marks it "Done"; don't treat that as final.
+Itinerary content is locked (36 days, approved), including Kamakura (Day 6) — confirmed set by Hanan on 2026-08-08, no longer under reconsideration.
 
-Extend this list as more items get reopened.
+Extend this list if items get reopened.
