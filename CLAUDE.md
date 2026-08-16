@@ -22,6 +22,7 @@ This file intentionally does **not** carry the full itinerary-planning history. 
 - Bump the version stamp in the header on every push: format `vN · bK · DD.MM` (date only, no time).
 - No new `<style>` layer — CSS edits go inside the existing `#design-washi`/`#v2-components` blocks.
 - No emoji in UI strings — SVG icons only. (Plain dingbat glyphs already in long-standing use — ✓, ✕, ➔ — are not emoji for this rule's purposes.)
+- Every `PINS` entry (the map-data array) carries an `"id"` field matching its schedule card's `data-id`, except `"cat":"Hotel"` entries (no `.card` counterpart exists for those). `app-patch-reviewer`'s rule W9 enforces this on every future edit — a card added/removed/renamed must keep its PINS twin in sync via the `id` link.
 - Sourcing standard for any place/venue content: Tabelog (restaurants/bars/cafes only — not rated for sights/attractions) + Google Maps (open-status and location only, never as a rating source). TripAdvisor is banned. See `place-verifier` agent for the full rule set (allergies, smoking, back/neck safety, tourist-trap filter).
 
 ## Subagent dispatch

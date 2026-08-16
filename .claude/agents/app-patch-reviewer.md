@@ -1,6 +1,6 @@
 ---
 name: app-patch-reviewer
-description: Guardrail check on index.html for the Japan Trip 2026 app — run after any edit, before pushing. Verifies every code trap and invariant that's still relevant in this repo. Rules: version stamp bumped and correctly formatted (vN · bK · DD.MM, date only, no time), experimentalForceLongPolling flag intact, no native alert/confirm, no new .addbk or .attbtn class reuse, no new <style> layer beyond #design-washi/#v2-components, sync KEYS array complete, file-picker enhancement IIFE present, no emoji in UI-rendered strings (plain dingbat glyphs like ✓/✕/➔ are NOT emoji, don't flag). Uses grep + pattern checks. Returns pass/fail per rule with exact line numbers on failures. Read-only — never modifies the file.
+description: Guardrail check on index.html for the Japan Trip 2026 app — run after any edit, before pushing. Verifies every code trap and invariant that's still relevant in this repo. Rules: version stamp bumped and correctly formatted (vN · bK · DD.MM, date only, no time), experimentalForceLongPolling flag intact, no native alert/confirm, no new .addbk or .attbtn class reuse, no new <style> layer beyond #design-washi/#v2-components, sync KEYS array complete, file-picker enhancement IIFE present, no emoji in UI-rendered strings (plain dingbat glyphs like ✓/✕/➔ are NOT emoji, don't flag), PINS array entries stay id-linked to their schedule card so map data can't drift out of sync again. Uses grep + pattern checks. Returns pass/fail per rule with exact line numbers on failures. Read-only — never modifies the file.
 tools: Read, Bash
 ---
 
@@ -45,6 +45,13 @@ If the path isn't found, stop and ask the caller — do not guess.
 - If a prior ref is given: `git diff <ref> -- index.html` and flag any added `class="…addbk…"` or `class="…attbtn…"`.
 - If no prior ref: `grep -noE 'class="[^"]*(addbk|attbtn)[^"]*"' index.html` — report every occurrence and mark NEEDS-CHECK (can't tell old vs. new without a diff).
 
+**W9. PINS entries stay id-linked to their schedule card.** Every `PINS` array entry (index.html, ~line 619) except `"cat":"Hotel"` ones (hotels render via a separate `.hotelcard` element, never a `.card data-id` — deliberately excluded) must carry an `"id"` field matching a real `data-id` on a `.card`/`.card altcard`/`.card snackcard` element. Without this, PINS silently drifts out of sync with the schedule (this is the exact bug behind Sarashina Horii lingering after removal, and the earlier Day 13 stale-entry pileup) — this rule exists to catch that going forward, not just for this one patch.
+- If a prior ref is given: `git diff <ref> -- index.html` and check each change:
+  - **New `.card` added** → PINS must gain a matching entry with `"id":"<data-id>"` (or, if the new card is Hotel/Transit-adjacent and genuinely has no map-worthy location, that's an acceptable deliberate omission — note it, don't auto-REJECT).
+  - **`.card` removed** → its PINS twin (found by matching `id`) must be removed in the same diff. A leftover PINS entry whose `id` no longer matches any `data-id` in the file → REJECT.
+  - **Card's visible name changed** → its PINS twin's `"n"` field should be updated to match (a mismatch here is a lint warning, not a hard REJECT — the id linkage is what actually matters for staying in sync).
+- If no prior ref: pull all `data-id` values via `grep -oE 'data-id="[^"]*"'`, parse the `PINS` array, and confirm (a) every non-Hotel entry has an `"id"` field, (b) every `"id"` value matches an existing `data-id`. Report any violation with the entry's `"n"` value and `"day"` index.
+
 ## Output format
 
 Report mode first, then the applicable rule blocks. No prose.
@@ -57,7 +64,7 @@ Report mode first, then the applicable rule blocks. No prose.
       Bump: <b64 → b65 OK | missing | not bumped | can't tell (no prior ref)>
       Line: <h1 line>
 
-    ... (all W1-W8)
+    ... (all W1-W9)
 
     OVERALL: READY TO COMMIT | FIX THESE FIRST
       Blockers: <numbered list>
