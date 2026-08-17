@@ -35,8 +35,9 @@ Before skipping verification because "that day is already closed": actually conf
 - Review count matters too — a 3.4 with 800 reviews is stronger than a 3.6 with 12. Report both.
 - If Tabelog has no page for the venue at all: NEEDS-CHECK (never PASS on an unrated venue) — do not substitute a Google Maps rating.
 
-**Smoking — HARD NO on indoor smoking (food/drink venues only)**
-- Read Tabelog's smoking field directly. `喫煙可` / `全席喫煙可` / `分煙` → REJECT.
+**Smoking — HARD NO on indoor combustible-cigarette smoke (food/drink venues only)**
+- The rule is about combustible cigarette smoke specifically — e-cigarettes/vapes indoors are fine (Hanan: doesn't bother him the way regular smoke does).
+- Read Tabelog's smoking field directly. `喫煙可` / `全席喫煙可` / `分煙` → REJECT, UNLESS a source explicitly states the indoor allowance is e-cigarette/vape-only with combustible cigarettes pushed to an outside area — that specific case is a PASS.
 - `禁煙` / `全席禁煙` → PASS this gate. Balcony-only smoking is OK.
 - Many classic Japanese counter bars smoke — never skip this check for bars.
 - Not applicable to sights/attractions.
