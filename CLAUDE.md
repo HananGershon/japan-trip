@@ -26,6 +26,10 @@ This file intentionally does **not** carry the full itinerary-planning history. 
 - Sourcing standard for any place/venue content: Tabelog (restaurants/bars/cafes only — not rated for sights/attractions) + Google Maps (open-status and location only, never as a rating source). TripAdvisor is banned. See `place-verifier` agent for the full rule set (allergies, smoking, back/neck safety, tourist-trap filter).
 - **Never reuse a `data-id` for different content — including an id whose old card was removed or fully replaced.** `V2Store` edits are keyed by `data-id` and persist indefinitely in Hanan/Pola's synced state, invisible from this repo (see the in-app-edits quirk above). Give repurposed or replaced cards a fresh id instead (check it's never appeared before with `git log --all -S'dNiM'`) — reusing an old id risks a stale edit silently reappearing on unrelated new content, with no error and no trace in `index.html`, only reproducible live in the app. This has actually happened three times (KI NO BI→Bar TRENCH showing the wrong title, a pre-emptive Bar Kugel→BARCRAFT rename, and Rest-at-hotel→Sennichimae Doguyasuji showing stale text through a hard refresh) — treat any "the app still shows old text/title after a confirmed-correct deploy" report as this bug first, not a caching issue, whenever the card's content was recently changed on a pre-existing id.
 
+## After every push
+
+Immediately after `git push`, give Hanan a short checklist of what changed — one line per change, in plain terms (which day/card, what's different), so he knows exactly what to open the app and test. Don't wait to be asked. Group multiple small pushes from the same conversation topic into one checklist if that reads better, but never skip it entirely.
+
 ## Subagent dispatch
 
 Two subagents live in `.claude/agents/` here:
