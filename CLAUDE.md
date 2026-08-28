@@ -20,6 +20,7 @@ This file intentionally does **not** carry the full itinerary-planning history. 
 
 - No native `alert()`/`confirm()` — use the existing `nwConfirm()` helper. (Two pre-existing native `confirm()` calls are known legacy, not something to imitate.)
 - Bump the version stamp in the header on every push: format `vN · bK · DD.MM` (date only, no time).
+- Every commit message must state the build number it corresponds to (e.g. `b182`), so a build can be traced back to its commit at a glance.
 - No new `<style>` layer — CSS edits go inside the existing `#design-washi`/`#v2-components` blocks.
 - No emoji in UI strings — SVG icons only. (Plain dingbat glyphs already in long-standing use — ✓, ✕, ➔ — are not emoji for this rule's purposes.)
 - Every `PINS` entry (the map-data array) carries an `"id"` field matching its schedule card's `data-id`, except `"cat":"Hotel"` entries (no `.card` counterpart exists for those). `app-patch-reviewer`'s rule W9 enforces this on every future edit — a card added/removed/renamed must keep its PINS twin in sync via the `id` link.
