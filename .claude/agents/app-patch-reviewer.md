@@ -1,6 +1,6 @@
 ---
 name: app-patch-reviewer
-description: Guardrail check on index.html for the Japan Trip 2026 app — run after any edit, before pushing. Verifies every code trap and invariant that's still relevant in this repo. Rules: version stamp bumped and correctly formatted (vN · bK · DD.MM, date only, no time), experimentalForceLongPolling flag intact, no native alert/confirm, no new .addbk or .attbtn class reuse, no new <style> layer beyond #design-washi/#v2-components, sync KEYS array complete, file-picker enhancement IIFE present, no emoji in UI-rendered strings (plain dingbat glyphs like ✓/✕/➔ are NOT emoji, don't flag), PINS array entries stay id-linked to their schedule card so map data can't drift out of sync again. Uses grep + pattern checks. Returns pass/fail per rule with exact line numbers on failures. Read-only — never modifies the file.
+description: Guardrail check on index.html for the Japan Trip 2026 app — run after any edit, before pushing. Verifies every code trap and invariant that's still relevant in this repo. Rules: version stamp bumped and correctly formatted (vN · bK · DD.MM, date only, no time), experimentalForceLongPolling flag intact, no native alert/confirm, no new .addbk or .attbtn class reuse, no new <style> layer beyond #design-washi/#v2-components, sync KEYS array complete, file-picker enhancement IIFE present, no emoji in UI-rendered strings (plain dingbat glyphs like ✓/✕/➔ are NOT emoji, don't flag), PINS array entries stay id-linked to their schedule card so map data can't drift out of sync again, no data-id reused for genuinely different content (stale V2Store edits silently reappearing). Uses grep + pattern checks. Returns pass/fail per rule with exact line numbers on failures. Read-only — never modifies the file.
 tools: Read, Bash
 ---
 
@@ -52,6 +52,11 @@ If the path isn't found, stop and ask the caller — do not guess.
   - **Card's visible name changed** → its PINS twin's `"n"` field should be updated to match (a mismatch here is a lint warning, not a hard REJECT — the id linkage is what actually matters for staying in sync).
 - If no prior ref: pull all `data-id` values via `grep -oE 'data-id="[^"]*"'`, parse the `PINS` array, and confirm (a) every non-Hotel entry has an `"id"` field, (b) every `"id"` value matches an existing `data-id`. Report any violation with the entry's `"n"` value and `"day"` index.
 
+**W10. No `data-id` reuse for different content.** `V2Store` edits (Hanan/Pola's in-app Edit button) are keyed by `data-id` and persist indefinitely in synced state, invisible from this repo. If a card's *content* changes to something unrelated (a place swap, a full rewrite) but keeps its OLD `data-id`, any pre-existing edit on that id can silently reappear on the new content — no error, no trace in `index.html`, reproducible only live in the app (has actually happened three times: KI NO BI→Bar TRENCH, a pre-emptive Bar Kugel→BARCRAFT rename, Rest-at-hotel→Sennichimae Doguyasuji).
+- If a prior ref is given: `git diff <ref> -- index.html` and for each card whose `<p class="n">` name/title text changed to something substantively different (not a minor wording tweak — a different place/purpose), check whether its `data-id` also changed. Name changed but id didn't → REJECT, recommend a fresh id (verify unused via `git log --all -S'd<N>i<M>'` before suggesting one).
+- Minor edits to an existing card about the same place (typo fix, added detail, reworded bullet) are fine and expected to keep the same id — only flag a genuine content/identity swap.
+- If no prior ref: can't reliably detect this rule — mark NEEDS-CHECK rather than PASS.
+
 ## Output format
 
 Report mode first, then the applicable rule blocks. No prose.
@@ -64,7 +69,7 @@ Report mode first, then the applicable rule blocks. No prose.
       Bump: <b64 → b65 OK | missing | not bumped | can't tell (no prior ref)>
       Line: <h1 line>
 
-    ... (all W1-W9)
+    ... (all W1-W10)
 
     OVERALL: READY TO COMMIT | FIX THESE FIRST
       Blockers: <numbered list>
